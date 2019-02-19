@@ -3,6 +3,7 @@ import { Form } from "semantic-ui-react";
 import { Field as ReduxFormField, reduxForm } from "redux-form";
 import SemanticReduxInputField from "../../utils/SemanticReduxInputField";
 import SemanticReduxSearchableDropdownField from "../../utils/SemanticReduxSearchableDropdownField";
+import SemanticReduxMapField from "../../utils/SemanticReduxMapField";
 import { postcodes } from "../../constants/postcodes";
 
 function myForm() {
@@ -18,8 +19,13 @@ function myForm() {
       <ReduxFormField
         name={"suburbPostcode"}
         component={SemanticReduxSearchableDropdownField}
-        label={"Suburb Postcode"}
+        label={"Suburb Postcode:"}
         dropdownOptions={postcodes}
+      />
+      <ReduxFormField
+        name={"location"}
+        component={SemanticReduxMapField}
+        label={"Location:"}
       />
     </Form>
   );

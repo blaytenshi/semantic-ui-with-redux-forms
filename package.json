@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "google-map-react": "1.1.2",
     "react": "16.8.0",
     "react-dom": "16.8.0",
     "react-redux": "6.0.0",
