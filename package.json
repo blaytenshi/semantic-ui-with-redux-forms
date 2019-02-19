@@ -1,0 +1,25 @@
+{
+  "name": "semantic-ui-react-with-redux-forms",
+  "version": "1.0.0",
+  "description": "Example showing how to integrate Semantic UI React with Redux Forms",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "react": "16.8.0",
+    "react-dom": "16.8.0",
+    "react-redux": "6.0.0",
+    "react-scripts": "2.0.3",
+    "redux": "4.0.1",
+    "redux-form": "8.1.0",
+    "semantic-ui-css": "2.4.1",
+    "semantic-ui-react": "0.85.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+}
