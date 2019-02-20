@@ -28,10 +28,12 @@ export default class GoogleMapModal extends Component {
   handleGoogleMapClick = mapProps => {
     console.log("MAP PROPS LAT", mapProps.lat);
     console.log("MAP PROPS LAT", mapProps.lng);
-    this.setState({
+    const coordinates = {
       lat: mapProps.lat,
       lng: mapProps.lng
-    });
+    };
+    this.props.handleLatLngUpdate(coordinates);
+    this.setState(coordinates);
   };
 
   render() {

@@ -17,6 +17,15 @@ class SemanticReduxMapField extends Component {
     });
   };
 
+  updateLocationLatLng = data => {
+    console.log("UPDATE LOCATION", data);
+    this.props.onChange(data); // this is calling redux-forms onChange()
+  };
+
+  handleAddressChange = (event, data) => {
+    console.log("ADDRESS FIELD CHANGED", data.value);
+  };
+
   render() {
     return (
       <div>
@@ -32,10 +41,12 @@ class SemanticReduxMapField extends Component {
             }
             actionPosition="right"
             placeholder={"Address..."}
+            onChange={this.handleAddressChange}
           />
           <GoogleMapModal
             isOpen={this.state.isGoogleMapModalOpen}
             handleCloseModal={this.triggerGoogleMapModal}
+            handleLatLngUpdate={this.updateLocationLatLng}
           />
         </Form.Field>
       </div>
