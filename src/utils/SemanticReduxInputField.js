@@ -3,7 +3,7 @@ import { Form, Input } from "semantic-ui-react";
 
 class SemanticReduxInputField extends Component {
   onChange = (synthEvent, data) => {
-    this.props.onChange(synthEvent);
+    this.props.input.onChange(synthEvent);
   };
 
   render() {

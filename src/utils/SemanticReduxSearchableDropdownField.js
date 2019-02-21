@@ -3,7 +3,7 @@ import { Form, Dropdown } from "semantic-ui-react";
 
 class SemanticReduxSearchableDropdownField extends Component {
   onChange = (event, data) => {
-    this.props.onChange(data.value);
+    this.props.input.onChange(data.value); // redux-form's .onChange() function
   };
 
   render() {

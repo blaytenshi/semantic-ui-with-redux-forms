@@ -6,6 +6,7 @@ import { Button, Modal } from "semantic-ui-react";
 // and there is a really old one (but still relevant!) 'react-google-maps'!
 import GoogleMapReact from "google-map-react";
 import MyMarker from "./MyMarker";
+import googleMaps from "@google/maps";
 
 export default class GoogleMapModal extends Component {
   static defaultProps = {
@@ -23,17 +24,34 @@ export default class GoogleMapModal extends Component {
       lat: 0,
       lng: 0
     };
+
+    this.googleMapsClient = googleMaps.createClient({
+      key: "AIzaSyA0mdJv9RMnow7fTCvttJkrNJOhPH8xTTo",
+      Promise: Promise
+    });
   }
 
   handleGoogleMapClick = mapProps => {
-    console.log("MAP PROPS LAT", mapProps.lat);
-    console.log("MAP PROPS LAT", mapProps.lng);
-    const coordinates = {
-      lat: mapProps.lat,
-      lng: mapProps.lng
-    };
-    this.props.handleLatLngUpdate(coordinates);
-    this.setState(coordinates);
+    // Uncomment this string if you want ot see the captured coordinates from the click
+    // console.log("LAT:", mapProps.lat, "LNG:", mapProps.lng);
+
+    this.googleMapsClient
+      .reverseGeocode({ latlng: [mapProps.lat, mapProps.lng] })
+      .asPromise()
+      .then(response => {
+        // Uncomment this string if you want to see the address
+        // console.log(response.json.results[0].formatted_address);
+        const locationData = {
+          lat: mapProps.lat,
+          lng: mapProps.lng,
+          address: response.json.results[0].formatted_address
+        };
+        this.props.handleLocationUpdates(locationData);
+        this.setState(locationData);
+      })
+      .catch(error => {
+        console.log("ERROR", error.message);
+      });
   };
 
   render() {
@@ -48,7 +66,7 @@ export default class GoogleMapModal extends Component {
               streetViewControl: false,
               zoomControl: false
             }}
-            boostrapURLKeys={{ key: "test" }}
+            boostrapURLKeys={{ key: "AIzaSyA0mdJv9RMnow7fTCvttJkrNJOhPH8xTTo" }}
             defaultCenter={this.props.center}
             defaultZoom={this.props.zoom}
             onClick={this.handleGoogleMapClick}
@@ -56,7 +74,7 @@ export default class GoogleMapModal extends Component {
             <MyMarker
               lat={this.state.lat}
               lng={this.state.lng}
-              text="My Marker"
+              text={this.state.address}
             />
           </GoogleMapReact>
         </div>

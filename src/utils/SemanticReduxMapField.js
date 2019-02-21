@@ -7,6 +7,11 @@ class SemanticReduxMapField extends Component {
     super(props);
 
     this.state = {
+      locationData: {
+        lat: 0,
+        lng: 0,
+        address: ""
+      },
       isGoogleMapModalOpen: false
     };
   }
@@ -17,13 +22,25 @@ class SemanticReduxMapField extends Component {
     });
   };
 
-  updateLocationLatLng = data => {
-    console.log("UPDATE LOCATION", data);
-    this.props.onChange(data); // this is calling redux-forms onChange()
+  updateLocation = newLocationData => {
+    // Want to see the new location data coming from the GoogleMapModal component? Uncomment this line...
+    // console.log("UPDATE LOCATION", newLocationData);
+    this.setState({
+      locationData: newLocationData
+    });
+    this.props.input.onChange(newLocationData); // this is calling redux-form's onChange()
   };
 
   handleAddressChange = (event, data) => {
-    console.log("ADDRESS FIELD CHANGED", data.value);
+    const newLocationData = {
+      lat: this.props.input.value.lat, // make a copy of old lat/lng data
+      lng: this.props.input.value.lng,
+      address: data.value
+    };
+    this.setState({
+      locationData: newLocationData
+    });
+    this.props.input.onChange(newLocationData);
   };
 
   render() {
@@ -42,11 +59,12 @@ class SemanticReduxMapField extends Component {
             actionPosition="right"
             placeholder={"Address..."}
             onChange={this.handleAddressChange}
+            value={this.state.locationData.address}
           />
           <GoogleMapModal
             isOpen={this.state.isGoogleMapModalOpen}
             handleCloseModal={this.triggerGoogleMapModal}
-            handleLatLngUpdate={this.updateLocationLatLng}
+            handleLocationUpdates={this.updateLocation}
           />
         </Form.Field>
       </div>
