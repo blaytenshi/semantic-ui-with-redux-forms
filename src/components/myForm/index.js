@@ -4,6 +4,7 @@ import { Field as ReduxFormField, reduxForm } from "redux-form";
 import SemanticReduxInputField from "../../utils/SemanticReduxInputField";
 import SemanticReduxSearchableDropdownField from "../../utils/SemanticReduxSearchableDropdownField";
 import SemanticReduxMapField from "../../utils/SemanticReduxMapField";
+import SemanticReduxNonEmptyCheckboxField from "../../utils/SemanticReduxNonEmptyCheckboxField";
 import { postcodes } from "../../constants/postcodes";
 
 function myForm() {
@@ -26,6 +27,11 @@ function myForm() {
         name={"location"}
         component={SemanticReduxMapField}
         label={"Location:"}
+      />
+      <ReduxFormField
+        name={"symptoms"}
+        component={SemanticReduxNonEmptyCheckboxField}
+        label={"Does patient exhibit any symptoms?"}
       />
     </Form>
   );

@@ -45,29 +45,27 @@ class SemanticReduxMapField extends Component {
 
   render() {
     return (
-      <div>
-        <Form.Field>
-          <label>{this.props.label}</label>
-          <Input
-            action={
-              <Button
-                color={"blue"}
-                icon={"location arrow"}
-                onClick={this.triggerGoogleMapModal}
-              />
-            }
-            actionPosition="right"
-            placeholder={"Address..."}
-            onChange={this.handleAddressChange}
-            value={this.state.locationData.address}
-          />
-          <GoogleMapModal
-            isOpen={this.state.isGoogleMapModalOpen}
-            handleCloseModal={this.triggerGoogleMapModal}
-            handleLocationUpdates={this.updateLocation}
-          />
-        </Form.Field>
-      </div>
+      <Form.Field>
+        <label>{this.props.label}</label>
+        <Input
+          action={
+            <Button
+              color={"blue"}
+              icon={"location arrow"}
+              onClick={this.triggerGoogleMapModal}
+            />
+          }
+          actionPosition="right"
+          placeholder={"Address..."}
+          onChange={this.handleAddressChange}
+          value={this.state.locationData.address}
+        />
+        <GoogleMapModal
+          isOpen={this.state.isGoogleMapModalOpen}
+          handleCloseModal={this.triggerGoogleMapModal}
+          handleLocationUpdates={this.updateLocation}
+        />
+      </Form.Field>
     );
   }
 }
