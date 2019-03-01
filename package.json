@@ -1,7 +1,7 @@
 {
   "name": "semantic-ui-react-with-redux-forms",
   "version": "1.0.0",
-  "description": "Example showing how to integrate Semantic UI React with Redux Forms.\n\nForm Input integration examples:\n- Basic Input Field\n- Searchable Dropdown Field\n- Google Maps Field (soon will return co-ordinates and address)",
+  "description": "Example showing how to integrate Semantic UI React with Redux Forms. This ain't your run of the mill normal input fields. I tried building some intricate input fields that we might need in the real world!\n\nForm Input integration examples:\n- Basic Input Field\n- Searchable Dropdown Field\n- Google Maps Field\n- [Incomplete] Checkbox Field that only appears when user answers the yes/no first",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
