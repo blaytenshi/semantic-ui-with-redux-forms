@@ -5,6 +5,7 @@ import SemanticReduxInputField from "../../utils/SemanticReduxInputField";
 import SemanticReduxSearchableDropdownField from "../../utils/SemanticReduxSearchableDropdownField";
 import SemanticReduxMapField from "../../utils/SemanticReduxMapField";
 import SemanticReduxNonEmptyCheckboxField from "../../utils/SemanticReduxNonEmptyCheckboxField";
+import SemanticReduxCheckboxes from "../../utils/SemanticReduxCheckboxes";
 import { postcodes } from "../../constants/postcodes";
 
 function myForm() {
@@ -32,6 +33,17 @@ function myForm() {
         name={"symptoms"}
         component={SemanticReduxNonEmptyCheckboxField}
         label={"Does patient exhibit any symptoms?"}
+      />
+      <ReduxFormField
+        name={"drinks"}
+        component={SemanticReduxCheckboxes}
+        label={"Which drinks have they had?"}
+        checkboxOptions={[
+          { name: "tea", label: "Tea" },
+          { name: "coffee", label: "Coffee" },
+          { name: "hotChocolate", label: "Hot Chocolate" },
+          { name: "none", label: "None" }
+        ]}
       />
     </Form>
   );
